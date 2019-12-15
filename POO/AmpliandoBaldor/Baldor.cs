@@ -98,6 +98,62 @@ namespace Baldor
             return result;
         }
 
+        public String maximo(params String[] v)
+        {
+            String result = null;
+            Double max = Double.MinValue;
+            Boolean ok = true;
+
+            for (int i = 0; i < v.Length; i++)
+            {
+                try
+                {
+                    Double x = Convert.ToDouble(v[i]);
+                    max = x > max ? x : max; 
+                }
+                catch (FormatException)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+
+            if (ok)
+            {
+                result = max.ToString(((formato != null) ? formato : ""), nfi);
+            }
+
+            return result;
+        }
+
+        public String minimo(params String[] v)
+        {
+            String result = null;
+            Double min = Double.MaxValue;
+            Boolean ok = true;
+
+            for (int i = 0; i < v.Length; i++)
+            {
+                try
+                {
+                    Double x = Convert.ToDouble(v[i]);
+                    min = x < min ? x : min;
+                }
+                catch (FormatException)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+
+            if (ok)
+            {
+                result = min.ToString(((formato != null) ? formato : ""), nfi);
+            }
+
+            return result;
+        }
+
         public void setFormato(String formato)
         {
             this.formato = formato;
